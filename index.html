@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Cutting Holes - Coming Soon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            padding: 40px;
+        }
+        
+        .logo {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .coming-soon {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            margin-bottom: 40px;
+            display: inline-block;
+        }
+        
+        .description {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 50px;
+            opacity: 0.8;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .feature {
+            background: rgba(255,255,255,0.1);
+            padding: 30px 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .feature p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .email-signup {
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 50px;
+            display: flex;
+            max-width: 400px;
+            margin: 30px auto;
+        }
+        
+        .email-signup input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            background: transparent;
+            color: white;
+            border-radius: 50px;
+            outline: none;
+            font-size: 16px;
+        }
+        
+        .email-signup input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .email-signup button {
+            padding: 15px 25px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .email-signup button:hover {
+            background: #45a049;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            font-size: 14px;
+            opacity: 0.6;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+            .subtitle {
+                font-size: 18px;
+            }
+            .features {
+                grid-template-columns: 1fr;
+            }
+            .email-signup {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🎬</div>
+        <h1>Project Cutting Holes</h1>
+        <div class="coming-soon">🚀 Coming Soon</div>
+        <div class="subtitle">AI-Powered Video Production Platform</div>
+        
+        <div class="description">
+            Transform your scripts into complete, professional videos using advanced AI. 
+            From concept to final cut - all in one platform with intelligent automation, 
+            reference-based consistency, and professional editing tools.
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📝</div>
+                <h3>Script to Video</h3>
+                <p>Upload scripts or create with AI. Automatic scene breakdown.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🎨</div>
+                <h3>Visual Style</h3>
+                <p>Consistent aesthetics across all scenes and shots.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">👥</div>
+                <h3>Characters</h3>
+                <p>Text-based character and environment management.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🎞️</div>
+                <h3>Storyboards</h3>
+                <p>AI-generated storyboards for every shot.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3>Fast Production</h3>
+                <p>From script to video in under 2 hours.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🎬</div>
+                <h3>Pro Editing</h3>
+                <p>Professional timeline with advanced tools.</p>
+            </div>
+        </div>
+        
+        <div style="margin: 50px 0;">
+            <h2 style="margin-bottom: 20px;">Get Early Access</h2>
+            <p style="margin-bottom: 20px;">Be the first to create videos with AI</p>
+            
+            <form class="email-signup" onsubmit="handleSignup(event)">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Join Waitlist</button>
+            </form>
+            
+            <p style="font-size: 14px; opacity: 0.7; margin-top: 15px;">
+                Early access users get 50% off first year!
+            </p>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 Project Cutting Holes. Coming Q4 2025.</p>
+        </div>
+    </div>
+
+    <script>
+        function handleSignup(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input').value;
+            alert('Thanks for signing up! We will notify ' + email + ' when we launch.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
