@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cutting Holes — a working model of market mechanics</title>
-<meta name="description" content="Cut a hole in the market's surface and look at the machine underneath. Three linked instruments mapping how markets actually work — from society and demographics down to price.">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Subtractive Logic — a working model of market mechanics</title>
+<meta name="description" content="Strip out what's already known — the factors, the beta, the market — and study what's left. Three linked instruments mapping how markets actually work, from society and demographics down to price.">
 <style>
 :root{
   --bg:#eef1f5; --bg2:#e7ebf1; --panel:#ffffff; --panel2:#f6f8fb;
@@ -86,7 +87,7 @@ a{color:inherit}
 .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;
   color:var(--accent-ink);margin:0 0 20px}
 h1.word{font-family:var(--mono);font-weight:700;letter-spacing:-.02em;line-height:.98;margin:0;
-  font-size:clamp(46px,8.5vw,104px);text-wrap:balance}
+  font-size:clamp(40px,7.4vw,90px);text-wrap:balance}
 h1.word .cut{color:var(--muted)}
 .thesis{font-size:clamp(19px,2.4vw,27px);line-height:1.42;color:var(--text);margin:26px 0 0;max-width:22ch;
   font-weight:450;text-wrap:balance}
@@ -142,8 +143,16 @@ h1.word .cut{color:var(--muted)}
 .chip{font-family:var(--mono);font-size:11.5px;color:var(--muted);background:var(--panel);border:1px solid var(--line);
   border-radius:20px;padding:5px 12px}
 
+/* ---- disclaimer ---- */
+.disclaimer{margin-top:44px;border:1px solid var(--line);border-radius:16px;background:var(--panel2);padding:22px 26px}
+.disclaimer .h{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--amb);
+  display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.disclaimer p{font-size:13px;line-height:1.62;color:var(--muted);margin:0 0 8px;max-width:80ch}
+.disclaimer p:last-child{margin-bottom:0}
+.disclaimer b{color:var(--text);font-weight:600}
+
 /* ---- footer ---- */
-footer{margin-top:56px;border-top:1px solid var(--line);padding:26px 0 44px}
+footer{margin-top:34px;border-top:1px solid var(--line);padding:26px 0 44px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
 footer .n{font-family:var(--mono);font-size:12px;color:var(--faint)}
 footer a{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none}
@@ -153,9 +162,9 @@ footer a:hover{color:var(--accent)}
 <body>
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="./" aria-label="Cutting Holes home">
+    <a class="brand" href="./" aria-label="Subtractive Logic home">
       <svg class="mk" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="3.4"/></svg>
-      Cutting&nbsp;Holes
+      Subtractive&nbsp;Logic
     </a>
     <nav>
       <a href="atlas.html">Atlas</a>
@@ -183,9 +192,9 @@ footer a:hover{color:var(--accent)}
     <div class="wrap">
       <div class="inner">
         <p class="eyebrow">Market Mechanics · a working model</p>
-        <h1 class="word"><span class="cut">Cutting</span> Holes</h1>
+        <h1 class="word"><span class="cut">Subtractive</span> Logic</h1>
         <p class="thesis">Cut a hole in the market's surface and look at the <b>machine underneath</b>.</p>
-        <p class="lede">The wires that turn a fact on a company's books — or a shift in a population — into a price. Three linked instruments map the whole mechanism, grounded in real ownership, filings and factor data, and in cited research. Nothing here is mock: the numbers come from the same data we run in production.</p>
+        <p class="lede">The method is subtractive: strip out what's already known — the factors, the beta, the market — and study what's left. Three linked instruments map the whole mechanism, from a fact on a company's books to a price, built on real ownership, filings and factor data and on cited research. A private, ongoing research project — a way of thinking about how markets work, not investment advice.</p>
         <div class="cta">
           <a class="btn primary" href="atlas.html">Open the Atlas →</a>
           <a class="btn ghost" href="#instruments">See all three instruments</a>
@@ -205,7 +214,7 @@ footer a:hover{color:var(--accent)}
         <div class="sub">Causal topology</div>
         <h3>The Atlas</h3>
         <div class="stat"><span><b>76</b> forces</span><span><b>140</b> links</span><span><b>20</b> loops</span></div>
-        <p>The whole machine on one canvas — from society, demographics and human capital down to price. Zoom from a system into a single node and read its story, its opposing forces, and whether we've validated it on real data.</p>
+        <p>The whole machine on one canvas — from society, demographics and human capital down to price. Zoom from a system into a single node and read its story, its opposing forces, and how far the data backs it up.</p>
         <span class="go">Enter the map →</span>
       </a>
 
@@ -241,20 +250,28 @@ footer a:hover{color:var(--accent)}
       </div>
       <div class="prov">
         <span class="lbl">Grounded in</span>
-        <span class="chip">SEC 13F ownership</span>
-        <span class="chip">Bloomberg prices</span>
-        <span class="chip">Fama–French factors</span>
-        <span class="chip">SEC XBRL filings</span>
+        <span class="chip">SEC 13F filings</span>
+        <span class="chip">SEC XBRL company facts</span>
+        <span class="chip">Published factor data</span>
+        <span class="chip">Public market data</span>
         <span class="chip">IMF · World Bank · Brookings · NBER</span>
       </div>
+    </div>
+    <!-- DISCLAIMER -->
+    <div class="disclaimer" id="disclaimer">
+      <div class="h">⚠ About this site · please read</div>
+      <p><b>Generated with AI.</b> The text, diagrams and analysis here were produced with the assistance of AI tools and have not been exhaustively fact-checked. They may contain errors, omissions or oversimplifications.</p>
+      <p><b>A private, independent research project.</b> This is a personal, non-professional exploration of how markets work, shared for informational and educational purposes only. It is not the product of any firm, fund or advisory service.</p>
+      <p><b>Public information only.</b> This project references only publicly available information — SEC filings (13F ownership and XBRL company facts) and publicly published academic factor data. Any market figures shown are illustrative aggregates; no proprietary, licensed or non-public dataset is reproduced or redistributed here. Company names and figures appear for educational commentary.</p>
+      <p><b>Not investment advice.</b> Nothing here is a recommendation, an offer, or a solicitation to buy or sell any security, and nothing should be relied upon for any financial decision. Figures are illustrative. Do your own research and consult a licensed professional.</p>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span class="n">Cutting Holes — a market-mechanics research instrument.</span>
-    <span><a href="atlas.html">Atlas</a> · <a href="accounting.html">Ledger</a> · <a href="backstage.html">Backstage</a></span>
+    <span class="n">Subtractive Logic — a private research project · generated with AI · not investment advice.</span>
+    <span><a href="#disclaimer">Disclaimer</a> · <a href="atlas.html">Atlas</a> · <a href="accounting.html">Ledger</a> · <a href="backstage.html">Backstage</a></span>
   </div>
 </footer>
 
