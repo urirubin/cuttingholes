@@ -1,0 +1,268 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Market Backstage</title></head><body><nav class="chnav" aria-label="Cutting Holes sections"><style>.chnav{position:fixed;top:9px;left:50%;transform:translateX(-50%);z-index:99999;display:flex;align-items:center;gap:2px;padding:4px;border-radius:12px;background:color-mix(in srgb,var(--panel,#111826) 85%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line,#1f2937);box-shadow:var(--shadow,0 6px 24px rgba(0,0,0,.4));font-family:var(--mono,ui-monospace,monospace);max-width:calc(100vw - 24px)}.chnav .chn-a{font-size:11.5px;letter-spacing:.02em;color:var(--muted,#8896a9);text-decoration:none;padding:5px 10px;border-radius:8px;transition:.14s;white-space:nowrap}.chnav .chn-a:hover{color:var(--text,#dfe6f0);background:var(--bg2,rgba(128,128,128,.12))}.chnav .chn-a.on{color:var(--accent-ink,#a7e0ff);background:var(--accent-soft,rgba(92,200,255,.14))}.chnav .chn-a:first-child{font-size:14px;color:var(--accent,#5cc8ff);padding:5px 9px}@media(max-width:560px){.chnav .chn-a{font-size:11px;padding:5px 7px}}</style><a class="chn-a" href="./">◈</a><a class="chn-a" href="atlas.html">Atlas</a><a class="chn-a" href="accounting.html">Ledger</a><a class="chn-a on" href="backstage.html">Backstage</a></nav><title>The Market Backstage</title>
+<style>
+:root{
+  --bg:#eef1f5;--bg2:#e7ebf1;--panel:#fff;--panel2:#f6f8fb;--line:#d3dae3;--line2:#e4e9ef;
+  --text:#16202c;--muted:#5a6a7b;--faint:#8a97a8;
+  --accent:#0e7fb0;--accent-ink:#0a5b80;--accent-soft:rgba(14,127,176,.12);
+  --up:#127e57;--dn:#c23a55;--amb:#b3730d;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono","Cascadia Code",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --shadow:0 1px 3px rgba(16,28,44,.08),0 12px 40px rgba(16,28,44,.07);
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#080b11;--bg2:#0b1018;--panel:#111826;--panel2:#0d1420;--line:#1f2937;--line2:#172131;
+  --text:#dfe6f0;--muted:#8896a9;--faint:#5b6b80;
+  --accent:#5cc8ff;--accent-ink:#a7e0ff;--accent-soft:rgba(92,200,255,.14);
+  --up:#3ecf8e;--dn:#ff6b81;--amb:#f5b74e;--shadow:0 1px 2px rgba(0,0,0,.4),0 16px 46px rgba(0,0,0,.4);
+}}
+:root[data-theme="light"]{--bg:#eef1f5;--bg2:#e7ebf1;--panel:#fff;--panel2:#f6f8fb;--line:#d3dae3;--line2:#e4e9ef;--text:#16202c;--muted:#5a6a7b;--faint:#8a97a8;--accent:#0e7fb0;--accent-ink:#0a5b80;--accent-soft:rgba(14,127,176,.12);--up:#127e57;--dn:#c23a55;--amb:#b3730d;--shadow:0 1px 3px rgba(16,28,44,.08),0 12px 40px rgba(16,28,44,.07)}
+:root[data-theme="dark"]{--bg:#080b11;--bg2:#0b1018;--panel:#111826;--panel2:#0d1420;--line:#1f2937;--line2:#172131;--text:#dfe6f0;--muted:#8896a9;--faint:#5b6b80;--accent:#5cc8ff;--accent-ink:#a7e0ff;--accent-soft:rgba(92,200,255,.14);--up:#3ecf8e;--dn:#ff6b81;--amb:#f5b74e;--shadow:0 1px 2px rgba(0,0,0,.4),0 16px 46px rgba(0,0,0,.4)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:0 22px}
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .row{max-width:820px;margin:0 auto;padding:11px 22px;display:flex;align-items:center;gap:14px}
+header.top .kick{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+header.top h1{font-family:var(--mono);font-size:15px;margin:0;font-weight:600}
+.spacer{flex:1}
+.hbtn{font-family:var(--mono);font-size:11px;color:var(--muted);background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:7px 11px;cursor:pointer;text-decoration:none}
+.hbtn:hover{color:var(--text);border-color:var(--accent)}
+.hero{padding:64px 0 34px}
+.hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.hero h2{font-size:40px;line-height:1.08;margin:0 0 18px;letter-spacing:-.02em;font-weight:650;text-wrap:balance}
+.hero p{font-size:18px;color:var(--muted);margin:0;max-width:64ch}
+section{padding:26px 0;border-top:1px solid var(--line2)}
+.snum{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+h3{font-size:26px;margin:0 0 14px;letter-spacing:-.01em;font-weight:640;text-wrap:balance}
+h4{font-size:18px;margin:26px 0 8px;font-weight:620}
+p{margin:0 0 15px}
+.lead{font-size:18px;color:var(--text)}
+.muted{color:var(--muted)}
+strong{font-weight:640}
+.pull{border-left:3px solid var(--accent);padding:2px 0 2px 16px;margin:20px 0;font-size:17px;color:var(--text)}
+.callout{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:18px 0}
+.callout .ch{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:7px}
+mark{background:color-mix(in srgb,var(--amb) 22%,transparent);color:inherit;padding:0 3px;border-radius:3px}
+/* ---- gamma simulator ---- */
+.sim{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;margin:22px 0;box-shadow:var(--shadow)}
+.sim .toprow{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:14px}
+.regime{display:flex;gap:3px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:3px}
+.regime button{font-family:var(--mono);font-size:12px;color:var(--muted);background:none;border:0;padding:8px 13px;border-radius:7px;cursor:pointer;transition:.15s}
+.regime button[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent-ink)}
+.simbtn{font-family:var(--mono);font-size:12px;color:var(--text);background:var(--bg2);border:1px solid var(--line);border-radius:9px;padding:8px 13px;cursor:pointer}
+.simbtn:hover{border-color:var(--accent)}
+.simsvg{width:100%;height:300px;display:block}
+.sliderrow{display:flex;align-items:center;gap:14px;margin:6px 0 4px}
+.sliderrow label{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+input[type=range]{flex:1;accent-color:var(--accent);height:4px}
+.readout{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.rcard{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:12px 13px}
+.rcard .rl{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:5px}
+.rcard .rv{font-family:var(--mono);font-size:20px;font-variant-numeric:tabular-nums;color:var(--text)}
+.rcard .rv.sm{font-size:15px}
+.verdict{margin-top:14px;border-radius:11px;padding:13px 15px;font-size:15px;line-height:1.55;border:1px solid var(--line)}
+.verdict.amp{background:color-mix(in srgb,var(--dn) 10%,transparent);border-color:color-mix(in srgb,var(--dn) 35%,transparent)}
+.verdict.damp{background:color-mix(in srgb,var(--up) 10%,transparent);border-color:color-mix(in srgb,var(--up) 35%,transparent)}
+.verdict b{font-family:var(--mono)}
+/* ---- player primer cards ---- */
+.cards{display:grid;grid-template-columns:1fr;gap:14px;margin:18px 0}
+.pcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.pcard .pctop{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+.pcard h4{margin:0;font-size:19px}
+.pcard .tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);border-radius:5px;padding:2px 7px}
+.pcard dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:12px 0 0}
+.pcard dt{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);padding-top:3px;white-space:nowrap}
+.pcard dd{margin:0;font-size:15px;line-height:1.55;color:var(--text)}
+.pcard dd.eg{color:var(--muted)}
+footer{padding:40px 0 70px;color:var(--faint);font-size:13px;border-top:1px solid var(--line2);margin-top:20px}
+footer a{color:var(--accent-ink)}
+@media (max-width:640px){.hero h2{font-size:30px}.readout{grid-template-columns:1fr}.sim .simsvg{height:240px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="top"><div class="row">
+  <div><div class="kick">Market Mechanics</div><h1>The Backstage</h1></div>
+  <div class="spacer"></div>
+  <a class="hbtn" id="atlasLink" href="#" style="display:none">↩ Atlas</a>
+  <button class="hbtn" id="themeBtn"><span id="themeLbl">Theme</span></button>
+</div></header>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">A field guide to the players you never see</div>
+    <h2>You traded the stock. These people traded around you.</h2>
+    <p>When you buy a share you own a piece of a company — delta one, story over. But most of the volume on your screen, and most of the moves that make no sense, come from players operating <em>behind</em> the quote: dealers hedging options, funds forced to trade by rules, brokers renting you leverage. This is what they actually do all day — and why it moves your stock.</p>
+  </div>
+
+  <section>
+    <div class="snum">01 · The root mechanism</div>
+    <h3>Dealer gamma: the market's hidden accelerator (and its brakes)</h3>
+    <p class="lead">Start where it starts — <strong>market making</strong>. A market maker is a shop (Citadel Securities, Susquehanna, Jane Street) that stands ready to buy at the bid and sell at the ask, all day, on millions of contracts. They don't want a view on where the stock goes; they want the <em>spread</em>. The whole business is: take the other side of everyone's trade, then neutralize the risk.</p>
+    <p>In stocks that's easy — sell you 100 shares, buy 100 shares back, flat. In <strong>options</strong> it's not, and that's where gamma is born.</p>
+
+    <h4>Why an option can't be hedged once and forgotten</h4>
+    <p>When a dealer sells you a call option, they take on a slice of directional exposure called <mark>delta</mark> — roughly, how many shares the option behaves like right now. To stay neutral they buy that many shares against it. Fine. But an option's delta <em>changes as the stock moves</em>: a call far below its strike acts like almost nothing (delta ≈ 0); the same call above its strike acts like the stock itself (delta ≈ 1). That rate of change — how fast delta moves as the stock moves — is <mark>gamma</mark>.</p>
+    <p class="pull">Gamma is the reason a dealer must <strong>keep re-hedging</strong>, buying and selling the underlying stock continuously just to stand still. Those forced trades are one of the largest flows in the market — and their <em>direction</em> is set by whether the dealer is short or long gamma.</p>
+
+    <p class="muted">Play with it. Drag the stock price and watch what the dealer is <em>forced</em> to do to stay neutral. Flip the regime to see the two opposite worlds.</p>
+
+    <div class="sim" id="sim">
+      <div class="toprow">
+        <div class="regime" role="group" aria-label="Gamma regime">
+          <button data-reg="short" aria-pressed="true">Dealer is SHORT gamma</button>
+          <button data-reg="long" aria-pressed="false">Dealer is LONG gamma</button>
+        </div>
+        <button class="simbtn" id="shockBtn">⚡ Shock the price</button>
+        <span class="spacer"></span>
+        <span class="muted" style="font-size:13px" id="regHint"></span>
+      </div>
+      <svg class="simsvg" id="simsvg" viewBox="0 0 720 300" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="sliderrow"><label>Stock price</label><input type="range" id="spot" min="70" max="130" value="88" step="0.5"><span class="rv" id="spotv" style="font-family:var(--mono);font-variant-numeric:tabular-nums;width:52px;text-align:right">$88</span></div>
+      <div class="readout">
+        <div class="rcard"><div class="rl">Option delta now</div><div class="rv" id="rDelta">0.20</div></div>
+        <div class="rcard"><div class="rl">Shares dealer must hold</div><div class="rv" id="rHedge">–</div></div>
+        <div class="rcard"><div class="rl">Last move → dealer must</div><div class="rv sm" id="rTrade">move the price</div></div>
+      </div>
+      <div class="verdict" id="verdict">Drag the price up and down to see it.</div>
+    </div>
+
+    <h4>The two worlds</h4>
+    <p><strong>Short gamma</strong> (the dealer <em>sold</em> options to the public — the usual state in single-name meme stocks, where retail buys calls): to stay hedged the dealer must <mark style="background:color-mix(in srgb,var(--dn) 22%,transparent)">buy as the stock rises and sell as it falls</mark> — trading <em>with</em> the move. That adds fuel: up begets buying begets up. It's an accelerator. This is the engine of a <strong>gamma squeeze</strong>.</p>
+    <p><strong>Long gamma</strong> (the dealer <em>owns</em> options — common at the index level, where funds systematically buy puts and sell calls, leaving dealers long gamma): the dealer must <mark style="background:color-mix(in srgb,var(--up) 22%,transparent)">sell as the stock rises and buy as it falls</mark> — trading <em>against</em> the move. That's a brake: it dampens volatility and can <em>pin</em> a price to a strike near expiry.</p>
+
+    <div class="callout"><div class="ch">The gamma flip</div>The market isn't permanently in one world. The level where the dealer community's <em>net</em> gamma crosses from positive to negative is the <strong>gamma flip</strong>. Above it, dealers are long gamma and the tape is calm and mean-reverting; below it, they're short gamma and moves get amplified. Crossing that line is like flipping a switch from shock-absorber to gas-can — the same news produces a shrug on one side and an avalanche on the other.</div>
+
+    <h4>Real episodes, so it sticks</h4>
+    <p><strong>GameStop, January 2021.</strong> A wave of retail call-buying pushed dealers deeply short gamma. As GME rose, they were forced to buy more and more stock to hedge, which pushed it higher, which forced more buying — a textbook gamma squeeze, compounded by an ordinary short squeeze. The stock went from ~$20 to an intraday ~$483.</p>
+    <p><strong>"Volmageddon," February 2018.</strong> For most of 2017 the popular trade was <em>selling</em> volatility, which left dealers long gamma and the S&P eerily calm — the fewest 1% days since the 1960s. When that positioning unwound on Feb 5, 2018, the VIX roughly doubled in a day and Credit Suisse's XIV note lost ~90% of its value overnight: the shock-absorber flipped into an amplifier.</p>
+    <p><strong>Index pinning, most quiet weeks.</strong> Structural put-buying and call-overwriting by institutions leave index dealers long gamma; their against-the-move hedging is a big reason broad indices spend calm periods drifting quietly and gravitating toward big option strikes into monthly expiry.</p>
+
+    <p class="muted">Why you never saw this as an equities trader: it lives in the <em>options</em> market and in dealer inventory, invisible on a price chart — but it is trading <em>your</em> stock, sometimes as the biggest buyer or seller in the name.</p>
+  </section>
+
+  <section>
+    <div class="snum">02 · The rest of the cast</div>
+    <h3>The other people behind the quote</h3>
+    <p class="muted">Gamma is one hidden hand. Here are the others — who they are, what they do all day, how they make money (the game), and why it reaches your stock.</p>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <footer><div class="wrap" style="padding:0">Part of the Market Mechanics atlas. The players and flows here map onto the atlas's Dealer gamma, Allocation, Price, Short/borrow and Issuer systems — <a id="atlasLink2" href="#">open the atlas</a> to see how they wire together. Illustrative simulator: option delta uses a simplified logistic curve to convey the mechanism, not to price real options.</div></footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+const $=s=>document.querySelector(s);
+// theme
+const themeBtn=$('#themeBtn');
+const cur=()=>document.documentElement.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+themeBtn.onclick=()=>{const t=cur()==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);$('#themeLbl').textContent=t==='dark'?'Light':'Dark';};
+$('#themeLbl').textContent=cur()==='dark'?'Light':'Dark';
+// atlas link (set at build)
+const ATLAS_URL="atlas.html";
+if(ATLAS_URL && !ATLAS_URL.startsWith('/*')){['#atlasLink','#atlasLink2'].forEach(s=>{const a=$(s);if(a){a.href=ATLAS_URL;a.target='_blank';a.rel='noopener';}});$('#atlasLink').style.display='';}
+
+// ---------- gamma simulator ----------
+const K=100, W=9, M=1000;           // strike, delta-width (vol proxy), option contracts (×100 sh sensitivity baked into M)
+const delta=S=>1/(1+Math.exp(-(S-K)/W));         // logistic call-delta proxy 0..1
+let regime='short', spot=88, prevSpot=88;
+const svg=$('#simsvg'), NS='http://www.w3.org/2000/svg';
+const PX={x0:52,x1:700,y0:24,y1:250}, SMIN=70,SMAX=130;
+const sx=S=>PX.x0+(S-SMIN)/(SMAX-SMIN)*(PX.x1-PX.x0);
+const sy=d=>PX.y1-d*(PX.y1-PX.y0);
+function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+function drawStatic(){
+  svg.replaceChildren();
+  // axes
+  svg.appendChild(el('line',{x1:PX.x0,y1:PX.y1,x2:PX.x1,y2:PX.y1,stroke:'var(--line)','stroke-width':1}));
+  svg.appendChild(el('line',{x1:PX.x0,y1:PX.y0,x2:PX.x0,y2:PX.y1,stroke:'var(--line)','stroke-width':1}));
+  [0,.5,1].forEach(d=>{svg.appendChild(el('line',{x1:PX.x0,y1:sy(d),x2:PX.x1,y2:sy(d),stroke:'var(--line2)','stroke-width':1,'stroke-dasharray':'2 5'}));
+    const t=el('text',{x:PX.x0-8,y:sy(d)+4,'text-anchor':'end','font-family':'var(--mono)','font-size':10,fill:'var(--faint)'});t.textContent='Δ '+d.toFixed(1);svg.appendChild(t);});
+  // strike marker
+  svg.appendChild(el('line',{x1:sx(K),y1:PX.y0,x2:sx(K),y2:PX.y1,stroke:'var(--amb)','stroke-width':1,'stroke-dasharray':'3 3','stroke-opacity':.7}));
+  const kt=el('text',{x:sx(K),y:PX.y0-8,'text-anchor':'middle','font-family':'var(--mono)','font-size':10,fill:'var(--amb)'});kt.textContent='strike $'+K;svg.appendChild(kt);
+  const xl=el('text',{x:(PX.x0+PX.x1)/2,y:PX.y1+30,'text-anchor':'middle','font-family':'var(--mono)','font-size':10,fill:'var(--faint)'});xl.textContent='stock price  →   the S-curve is the option’s delta; its steepness is gamma';svg.appendChild(xl);
+  // delta curve
+  let d='';for(let S=SMIN;S<=SMAX;S+=1){d+=(S===SMIN?'M':'L')+sx(S).toFixed(1)+','+sy(delta(S)).toFixed(1);}
+  svg.appendChild(el('path',{d,fill:'none',stroke:'var(--accent)','stroke-width':2.5,'stroke-opacity':.85}));
+  dynamic=el('g',{});svg.appendChild(dynamic);
+}
+let dynamic;
+function fmt(n){const a=Math.abs(Math.round(n));return (n<0?'−':'')+a.toLocaleString();}
+function update(animateTrade){
+  const d=delta(spot), hedgeSign=regime==='short'?1:-1;   // short gamma: dealer holds +M·Δ shares; long: −M·Δ
+  const hedge=hedgeSign*M*d;
+  const prevD=delta(prevSpot), prevHedge=hedgeSign*M*prevD, dTrade=hedge-prevHedge, dS=spot-prevSpot;
+  // readouts
+  $('#rDelta').textContent=d.toFixed(2);
+  $('#rHedge').textContent=fmt(hedge)+' sh';
+  const buying=dTrade>0.5, selling=dTrade<-0.5;
+  const tradeTxt=Math.abs(dTrade)<0.5?'(no move)':(buying?'BUY ':'SELL ')+fmt(Math.abs(dTrade))+' sh';
+  $('#rTrade').textContent=tradeTxt;$('#rTrade').style.color=buying?'var(--up)':selling?'var(--dn)':'var(--muted)';
+  // verdict
+  const v=$('#verdict');
+  if(Math.abs(dS)<0.4){v.className='verdict';v.innerHTML='Drag the price to see the forced hedge.';}
+  else{
+    const withMove=(dS>0&&buying)||(dS<0&&selling);
+    if(withMove){v.className='verdict amp';v.innerHTML=`Price ${dS>0?'rose':'fell'}, and to stay neutral the dealer had to <b>${dS>0?'BUY':'SELL'}</b> — <b>with the move</b>. That pushes price further the same way: an <b>amplifier</b>. Repeat this and you get a gamma squeeze.`;}
+    else{v.className='verdict damp';v.innerHTML=`Price ${dS>0?'rose':'fell'}, and the dealer had to <b>${dS>0?'SELL':'BUY'}</b> — <b>against the move</b>. That leans on price and calms it: a <b>brake</b>. Near expiry this can pin the stock to the strike.`;}
+  }
+  // dynamic layer: current point + hedge arrow
+  dynamic.replaceChildren();
+  const px=sx(spot), py=sy(d);
+  dynamic.appendChild(el('line',{x1:px,y1:PX.y0,x2:px,y2:PX.y1,stroke:'var(--text)','stroke-width':1,'stroke-opacity':.35}));
+  dynamic.appendChild(el('circle',{cx:px,cy:py,r:6,fill:'var(--accent)',stroke:'var(--panel)','stroke-width':2}));
+  const dot=el('circle',{cx:px,cy:PX.y1,r:5,fill:buying?'var(--up)':selling?'var(--dn)':'var(--muted)'});dynamic.appendChild(dot);
+  const lab=el('text',{x:px,y:PX.y1+16,'text-anchor':'middle','font-family':'var(--mono)','font-size':11,fill:buying?'var(--up)':selling?'var(--dn)':'var(--muted)'});
+  lab.textContent=Math.abs(dTrade)<0.5?'':(buying?'▲ buying':'▼ selling');dynamic.appendChild(lab);
+  if(animateTrade&&!matchMedia('(prefers-reduced-motion:reduce)').matches){dot.setAttribute('r','9');setTimeout(()=>dot&&dot.setAttribute('r','5'),160);}
+  prevSpot=spot;
+}
+function setRegime(r){regime=r;document.querySelectorAll('[data-reg]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.reg===r));
+  $('#regHint').textContent=r==='short'?'e.g. a meme stock where the crowd bought calls':'e.g. an index where funds sell calls / buy puts';
+  prevSpot=spot;update(false);}
+document.querySelectorAll('[data-reg]').forEach(b=>b.onclick=()=>setRegime(b.dataset.reg));
+$('#spot').addEventListener('input',e=>{spot=+e.target.value;$('#spotv').textContent='$'+spot.toFixed(spot%1?1:0);update(true);});
+$('#shockBtn').onclick=()=>{const slider=$('#spot');let target=spot+(Math.random()<0.5?-1:1)*(8+Math.random()*10);target=Math.max(SMIN+2,Math.min(SMAX-2,target));
+  const start=spot,steps=22;let i=0;const iv=setInterval(()=>{i++;spot=start+(target-start)*(i/steps);slider.value=spot;$('#spotv').textContent='$'+spot.toFixed(1);update(true);if(i>=steps)clearInterval(iv);},28);};
+drawStatic();setRegime('short');
+
+// ---------- player primer cards ----------
+const PLAYERS=[
+ {name:'Market makers & PFOF',tag:'Sell-side · liquidity',who:'High-speed electronic dealers — Citadel Securities, Virtu, Susquehanna, Jane Street — plus the exchange specialists of old.',
+  day:'Continuously quote both sides of thousands of names and options, take the other side of your order, and instantly hedge the risk. In options that means the delta-hedging you just saw; in stocks it means offloading inventory in milliseconds.',
+  game:'Earn the bid-ask spread millions of times a day, and pay retail brokers for your order flow (PFOF) because uninformed retail orders are cheap to trade against. Volume, not direction, is the profit.',
+  eg:'When you tap "buy" in Robinhood, your order usually isn’t routed to a public exchange — it’s sold to Citadel Securities or Virtu, who fills you and pockets the spread. That arrangement funded "commission-free" trading.'},
+ {name:'Prime brokers & leverage',tag:'Sell-side · plumbing',who:'The prime-brokerage arms of big banks (Goldman, Morgan Stanley, JPMorgan) that service hedge funds.',
+  day:'Lend hedge funds cash and securities so they can run positions many times their capital, clear and custody their trades, and lend out shares for shorting. They also see, in aggregate, what their clients are doing.',
+  game:'Financing spreads and fees on leverage and stock lending. The risk: if a client blows up, the prime broker is on the hook for the loans — so they set margin and can force liquidation.',
+  eg:'In March 2021 Archegos, a family office, held ~$100bn of concentrated equity swaps through several prime brokers who each saw only their slice. When the stocks fell, margin calls hit at once; the fire-sale erased ~$10bn+ across banks (Credit Suisse alone ~$5.5bn).'},
+ {name:'Institutional allocators',tag:'Buy-side · the whales',who:'Pensions, endowments, insurers and mutual funds — the "real money" that owns most of the market, plus the hedge funds that trade around them.',
+  day:'Allocate to managers and factors against a benchmark, rebalance on a schedule, and file quarterly holdings (the 13F). Most are measured on <em>relative</em> performance, so they hug the index and rarely stray far.',
+  game:'Fees on assets under management and career risk minimization. Because they’re benchmark-relative, they buy what’s already winning and are forced to trim on concentration caps — a big, slow, rule-driven flow.',
+  eg:'When one name grows too large in a portfolio (Nvidia pushing past a fund’s concentration limit, or the 25%/50% rules for diversified funds), managers must sell it regardless of their view — mechanical selling that has nothing to do with the story.'},
+ {name:'Index & passive funds',tag:'Buy-side · rule-forced',who:'Index trackers and ETFs (Vanguard, BlackRock/iShares, State Street) that must mirror a benchmark, now a majority of US fund assets.',
+  day:'Hold every index member at its benchmark weight and do nothing discretionary — but mechanically buy on inclusion, sell on deletion, and rebalance on reconstitution dates. Cap-weighting means they automatically buy more of whatever rises.',
+  game:'Razor-thin fees on enormous scale. They take zero view; their trades are pure, predictable, calendar-driven demand — which others front-run.',
+  eg:'When a stock joins the S&P 500, every tracker must buy it at once. Historically that "index effect" was a jump of ~7% in the 1990s; it has since collapsed toward ~0.3% as arbitrageurs learned to front-run the predictable buy.'},
+ {name:'Securities lending & the short side',tag:'Plumbing · borrow',who:'The lenders (custodians, index funds) who rent out shares, and the short sellers who borrow them to bet against a stock.',
+  day:'To short, you must first <em>locate and borrow</em> a share, paying a fee; the lender can recall it at any time. When a crowded short rises, lenders recall and brokers force buy-ins — covering regardless of thesis.',
+  game:'Lenders earn the borrow fee (tiny for easy names, enormous for "hard-to-borrow" ones). Shorts profit if the price falls faster than the carry cost — but face unlimited loss and recall risk.',
+  eg:'GameStop had short interest reported above 100% of its float — the same shares lent and re-shorted. As it rose, recalls and forced buy-ins turned shorts into desperate buyers, the short-squeeze half of the 2021 move.'},
+ {name:'Settlement & the dark plumbing',tag:'Plumbing · unseen',who:'The clearinghouse (DTCC/NSCC) and the off-exchange venues (dark pools, internalizers) where much trading actually happens.',
+  day:'Net and guarantee every trade, hold collateral against settlement risk, and match large orders away from the lit exchange so big players don’t move the price against themselves. Since 2024, US trades settle in one day (T+1).',
+  game:'Clearing fees and reduced market impact. The clearinghouse’s collateral demands can themselves force behavior — the hidden constraint that surfaces in a crisis.',
+  eg:'At the peak of the 2021 GameStop frenzy, the NSCC’s collateral requirement on Robinhood spiked into the billions overnight; unable to post it, Robinhood restricted buying of GME — a settlement-plumbing constraint that stopped the squeeze cold.'},
+];
+$('#cards').innerHTML=PLAYERS.map(p=>`<div class="pcard">
+  <div class="pctop"><h4>${p.name}</h4><span class="tag">${p.tag}</span></div>
+  <dl>
+   <dt>Who</dt><dd>${p.who}</dd>
+   <dt>All day</dt><dd>${p.day}</dd>
+   <dt>The game</dt><dd>${p.game}</dd>
+   <dt>Example</dt><dd class="eg">${p.eg}</dd>
+  </dl></div>`).join('');
+})();
+</script>
+</body></html>
